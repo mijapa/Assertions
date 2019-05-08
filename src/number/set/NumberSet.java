@@ -4,9 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class NumberSet {
-    public static int MAX_SIZE = 100;
-    private int[] nSet = new int[MAX_SIZE];
+    public static int MAX_SIZE;
+    private int[] nSet;
     private int size = 0;
+
+    public NumberSet(int maxSize) {
+        MAX_SIZE = maxSize;
+        nSet = new int[maxSize];
+    }
 
     public void add(int i) throws Exception {
         if (size == MAX_SIZE)
@@ -14,7 +19,6 @@ public class NumberSet {
         else {
             nSet[size++] = i;
         }
-
     }
 
     public List<Integer> asList() {

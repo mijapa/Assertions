@@ -6,13 +6,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class NumberSetTest {
 
     @Test
     void shouldCheckReturningAsList() {
         //given
-        NumberSet numberSet = new NumberSet();
+        NumberSet numberSet = new NumberSet(10);
         List<Integer> list = new ArrayList<>();
 
         //when
@@ -37,7 +38,7 @@ class NumberSetTest {
     @Test
     void shouldCheckAddingNumbers() {
         //given
-        NumberSet numberSet = new NumberSet();
+        NumberSet numberSet = new NumberSet(10);
         List<Integer> list = new ArrayList<>();
 
         try {
@@ -58,4 +59,20 @@ class NumberSetTest {
         //then
         assertEquals(list, numberSetList);
     }
+
+    @Test
+    void shouldCheckOverflowWhenAddingNumbers() {
+        //given
+        NumberSet numberSet = new NumberSet(1);
+        //when
+        try {
+            numberSet.add(1);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        //then
+        assertThrows(Exception.class, () -> numberSet.add(2));
+    }
+
+
 }
