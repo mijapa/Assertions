@@ -28,4 +28,18 @@ public class NumberSet {
         }
         return intList;
     }
+
+    public void remove(int i) throws Exception {
+        if (size == 0)
+            throw new Exception();
+        else {
+            for (int j = 0; j < size; j++) {
+                if (nSet[j] == i) {
+                    //move last element into place of removed element
+                    //check this place one more time
+                    nSet[j--] = nSet[--size];
+                }
+            }
+        }
+    }
 }

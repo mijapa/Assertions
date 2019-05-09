@@ -61,6 +61,34 @@ class NumberSetTest {
     }
 
     @Test
+    void shouldCheckRemovingNumbers() {
+        //given
+        NumberSet numberSet = new NumberSet(10);
+        List<Integer> list = new ArrayList<>();
+
+        //when
+        try {
+            numberSet.add(2);
+            numberSet.add(1);
+            numberSet.add(2);
+            numberSet.add(3);
+            numberSet.add(-3);
+            numberSet.add(2);
+            numberSet.remove(2);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        list.add(-3);
+        list.add(1);
+        list.add(3);
+
+        List<Integer> numberSetList = numberSet.asList();
+
+        //then
+        assertEquals(list, numberSetList);
+    }
+
+    @Test
     void shouldCheckOverflowWhenAddingNumbers() {
         //given
         NumberSet numberSet = new NumberSet(1);
@@ -74,5 +102,19 @@ class NumberSetTest {
         assertThrows(Exception.class, () -> numberSet.add(2));
     }
 
+    @Test
+    void shouldCheckIfEmptyWhenRemovingNumbers() {
+        //given
+        NumberSet numberSet = new NumberSet(1);
+        //when
+        try {
+            numberSet.add(1);
+            numberSet.remove(1);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        //then
+        assertThrows(Exception.class, () -> numberSet.remove(2));
+    }
 
 }
