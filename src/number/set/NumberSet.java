@@ -42,4 +42,38 @@ public class NumberSet {
             }
         }
     }
+
+    public int getSumOfElements() {
+        int sum = 0;
+        for (int i = 0; i < size; i++) {
+            sum += nSet[i];
+        }
+        return sum;
+    }
+
+    public void divideAllElementsBy(int d) throws Exception {
+        if (d == 0) throw new Exception();
+        else {
+            for (int i = 0; i < size; i++) {
+                nSet[i] /= d;
+            }
+        }
+    }
+
+    public int getRandomValue(double r) throws Exception {
+        if (r < 0 || r >= 1) throw new Exception();
+        if (size == 0) throw new Exception();
+        return nSet[(int) (r * size)];
+    }
+
+    public boolean contains(int i) {
+        for (int j = 0; j < size; j++) {
+            if (nSet[j] == i) return true;
+        }
+        return false;
+    }
+
+    public int getSize() {
+        return size;
+    }
 }
