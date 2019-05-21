@@ -14,6 +14,7 @@ public class NumberSet {
     }
 
     public void add(int i) throws Exception {
+        assert (size <= MAX_SIZE);
         if (size == MAX_SIZE)
             throw new Exception();
         else {
@@ -23,6 +24,7 @@ public class NumberSet {
 
     public List<Integer> asList() {
         List<Integer> intList = new ArrayList<>();
+        assert (intList != null);
         for (int i = 0; i < size; i++) {
             intList.add(nSet[i]);
         }
@@ -30,6 +32,7 @@ public class NumberSet {
     }
 
     public void remove(int i) throws Exception {
+        assert (size > 0);
         if (size == 0)
             throw new Exception();
         else {
@@ -52,6 +55,7 @@ public class NumberSet {
     }
 
     public void divideAllElementsBy(int d) throws Exception {
+        assert (d != 0) : "Nie można dzielić przez zero!";
         if (d == 0) throw new Exception();
         else {
             for (int i = 0; i < size; i++) {
@@ -61,6 +65,7 @@ public class NumberSet {
     }
 
     public int getRandomValue(double r) throws Exception {
+        assert (r >= 0 && r < 1) : "Losowa liczba musi pochodzić z przedziału [0-1)";
         if (r < 0 || r >= 1) throw new Exception();
         if (size == 0) throw new Exception();
         return nSet[(int) (r * size)];
